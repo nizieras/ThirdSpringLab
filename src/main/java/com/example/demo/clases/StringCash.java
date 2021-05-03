@@ -2,22 +2,22 @@ package com.example.demo.clases;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 @Component
 public class StringCash {
-    private final Map<TransmittedStrings, ReturnedString> cash = new HashMap<>();
+    private final Map<ArrayList<String>, String> cash = new HashMap<>();
 
-    public ReturnedString addStringsToCash(TransmittedStrings transmittedStrings, ReturnedString returnedString) {
-       return cash.put(transmittedStrings, returnedString) ;
+    public String addStringsToCash(ArrayList<String> strings, String result) {
+       return cash.put(strings, result) ;
     }
 
-    public ReturnedString getReturnedString (TransmittedStrings transmittedStrings){
-        return cash.get(transmittedStrings);
+    public String getResultString (ArrayList<String> strings){
+        return cash.get(strings);
     }
 
-    public boolean isExistTransmittedStrings(TransmittedStrings transmittedStrings){
-        return cash.containsKey(transmittedStrings);
+    public boolean isExistTransmittedStrings(ArrayList<String> strings){
+        return cash.containsKey(strings);
     }
 }

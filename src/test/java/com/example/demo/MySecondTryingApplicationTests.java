@@ -20,26 +20,26 @@ class MySecondTryingApplicationTests {
 
 	@Test
 	void stringToUpCaseTest() throws Exception {
-		this.mockMvc.perform(get("/stringAct/toUpCase?string=yourString"))
+		this.mockMvc.perform(get("/toUpCase?string=yourString"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().json("{Результат:YOURSTRING}"));
+				.andExpect(content().string("YOURSTRING"));
 	}
 
 	@Test
 	void stringToLowCaseTest() throws Exception {
-		this.mockMvc.perform(get("/stringAct/toLowCase?string=YOURSTRING"))
+		this.mockMvc.perform(get("/toLowCase?string=YOURSTRING"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().json("{Результат:yourstring}"));
+				.andExpect(content().string("yourstring"));
 	}
 
 	@Test
 	void stringUnionTest() throws Exception {
-		this.mockMvc.perform(get("/stringAct/union?string=yourString&secString=yourSecString"))
+		this.mockMvc.perform(get("/union?string=yourString&secString=yourSecString"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().json("{Результат:yourStringyourSecString}"));
+				.andExpect(content().string("yourStringyourSecString"));
 	}
 
 }
