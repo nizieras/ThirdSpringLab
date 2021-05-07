@@ -15,13 +15,8 @@ public class StringServiceImpl implements StringService {
     private final StringCash stringCash;
     private final Logger logger = LoggerFactory.getLogger(StringServiceImpl.class);
 
-    public String extractResultFromCash(ArrayList<String> strings) {
+    private String extractResultFromCash(ArrayList<String> strings) {
         logger.info("Transmitted strings finding in cash");
-        return stringCash.getResultString(strings);
-    }
-
-    public String addingToCash(ArrayList<String> strings, String result){
-        stringCash.addStringsToCash(strings, result);
         return stringCash.getResultString(strings);
     }
 
@@ -32,7 +27,9 @@ public class StringServiceImpl implements StringService {
         if(stringCash.isExistTransmittedStrings(strings))
             return extractResultFromCash(strings);
         logger.info("String successfully transfer to up case");
-        return addingToCash(strings, line.toUpperCase());
+        String result = line.toUpperCase();
+        stringCash.addStringsToCash(strings, result);
+        return result;
     }
 
     public String stringToLowCase(String line){
@@ -42,7 +39,9 @@ public class StringServiceImpl implements StringService {
         if(stringCash.isExistTransmittedStrings(strings))
             return extractResultFromCash(strings);
         logger.info("String successfully transfer to low case");
-        return addingToCash(strings, line.toLowerCase());
+        String result = line.toLowerCase();
+        stringCash.addStringsToCash(strings, result);
+        return result;
 
     }
 
@@ -54,6 +53,8 @@ public class StringServiceImpl implements StringService {
         if(stringCash.isExistTransmittedStrings(strings))
             return extractResultFromCash(strings);
         logger.info("Strings successfully united");
-        return addingToCash(strings, firstLine+secondLine);
+        String result = firstLine+secondLine;
+       stringCash.addStringsToCash(strings, result);
+        return result;
     }
 }

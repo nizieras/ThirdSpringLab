@@ -9,8 +9,8 @@ import java.util.Map;
 public class StringCash {
     private final Map<ArrayList<String>, String> cash = new HashMap<>();
 
-    public String addStringsToCash(ArrayList<String> strings, String result) {
-       return cash.put(strings, result) ;
+    public void addStringsToCash(ArrayList<String> strings, String result) {
+       cash.put(strings, result) ;
     }
 
     public String getResultString (ArrayList<String> strings){
